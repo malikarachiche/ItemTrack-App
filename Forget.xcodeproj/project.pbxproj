@@ -16,6 +16,7 @@
 		4503ADEF21078D1200C67C96 /* ForgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503ADEE21078D1200C67C96 /* ForgetTests.swift */; };
 		4503ADFA21078D1200C67C96 /* ForgetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503ADF921078D1200C67C96 /* ForgetUITests.swift */; };
 		4503AE0C210A343A00C67C96 /* CustomListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE0B210A343A00C67C96 /* CustomListViewController.swift */; };
+		4503AE10210A905600C67C96 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE0F210A905600C67C96 /* ItemModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		4503ADF921078D1200C67C96 /* ForgetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetUITests.swift; sourceTree = "<group>"; };
 		4503ADFB21078D1200C67C96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4503AE0B210A343A00C67C96 /* CustomListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomListViewController.swift; sourceTree = "<group>"; };
+		4503AE0F210A905600C67C96 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				4503AE0B210A343A00C67C96 /* CustomListViewController.swift */,
+				4503AE0F210A905600C67C96 /* ItemModel.swift */,
 				4503ADD621078D0F00C67C96 /* AppDelegate.swift */,
 				4503ADD821078D0F00C67C96 /* ViewController.swift */,
 				4503ADDA21078D0F00C67C96 /* Main.storyboard */,
@@ -262,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4503AE10210A905600C67C96 /* ItemModel.swift in Sources */,
 				4503ADD921078D0F00C67C96 /* ViewController.swift in Sources */,
 				4503ADD721078D0F00C67C96 /* AppDelegate.swift in Sources */,
 				4503ADDF21078D0F00C67C96 /* Forget.xcdatamodeld in Sources */,

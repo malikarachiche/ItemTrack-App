@@ -106,29 +106,58 @@
                                     <segue destination="qRD-3l-7jt" kind="show" id="YfS-Ii-hEn"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter items here..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fI8-ml-h3p">
-                                <rect key="frame" x="16" y="78" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="1gF-L3-IcO">
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="textFieldAction:" destination="XB0-WO-A2o" eventType="editingDidBegin" id="Mkw-Wo-M9A"/>
-                                    <action selector="textFieldCancel:" destination="XB0-WO-A2o" eventType="touchCancel" id="e9D-di-w2L"/>
-                                    <action selector="textFieldEditingEnd:" destination="XB0-WO-A2o" eventType="editingDidEnd" id="OiT-7G-GWB"/>
+                                    <outlet property="delegate" destination="XB0-WO-A2o" id="EoM-KV-kPV"/>
                                 </connections>
-                            </textField>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ByL-1V-xDn">
+                                <rect key="frame" x="0.0" y="120" width="375" height="469"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="W0p-dD-jRX">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="W0p-dD-jRX" id="vx0-yW-vJZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" name="tcOffWhite"/>
                         <constraints>
+                            <constraint firstItem="1gF-L3-IcO" firstAttribute="top" secondItem="PfM-5S-oex" secondAttribute="top" id="3DW-nR-ay8"/>
+                            <constraint firstItem="1gF-L3-IcO" firstAttribute="leading" secondItem="PfM-5S-oex" secondAttribute="leading" id="75v-S3-Xcp"/>
                             <constraint firstItem="PfM-5S-oex" firstAttribute="bottom" secondItem="UbF-Yh-c9i" secondAttribute="bottom" constant="20" id="XJG-t1-zIo"/>
                             <constraint firstItem="PfM-5S-oex" firstAttribute="trailing" secondItem="UbF-Yh-c9i" secondAttribute="trailing" constant="16" id="dQT-yh-fro"/>
                             <constraint firstItem="UbF-Yh-c9i" firstAttribute="leading" secondItem="PfM-5S-oex" secondAttribute="leading" constant="16" id="kDp-rS-jVy"/>
+                            <constraint firstItem="1gF-L3-IcO" firstAttribute="trailing" secondItem="PfM-5S-oex" secondAttribute="trailing" id="qmh-C4-L87"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PfM-5S-oex"/>
                     </view>
+                    <connections>
+                        <outlet property="CustomTableView" destination="ByL-1V-xDn" id="a8a-XZ-PfF"/>
+                        <outlet property="customTableView" destination="ByL-1V-xDn" id="vWK-U8-6fn"/>
+                        <outlet property="searchBar" destination="1gF-L3-IcO" id="7gv-QX-JTo"/>
+                        <outlet property="searchDisplayController" destination="b05-dI-hPv" id="wDr-Jk-Kgy"/>
+                        <outlet property="setTimeButtonOutlet" destination="UbF-Yh-c9i" id="K8W-ee-2ut"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dSU-nz-uoT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="b05-dI-hPv">
+                    <connections>
+                        <outlet property="delegate" destination="XB0-WO-A2o" id="rI4-Hh-4Oc"/>
+                        <outlet property="searchBar" destination="1gF-L3-IcO" id="TXk-up-C1d"/>
+                        <outlet property="searchContentsController" destination="XB0-WO-A2o" id="kVR-4l-cli"/>
+                        <outlet property="searchResultsDataSource" destination="XB0-WO-A2o" id="Iec-IB-25f"/>
+                        <outlet property="searchResultsDelegate" destination="XB0-WO-A2o" id="lU5-je-hi7"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="776.79999999999995" y="620.23988005997012"/>
         </scene>
