@@ -81,11 +81,6 @@ class CustomListViewController: UIViewController, UISearchBarDelegate, UITableVi
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-//        filteredData = searchText.isEmpty ? itemsList : itemsList.filter({(dataItems) -> Bool in
-//            // If dataItem matches the searchText, return true to include it
-//            return dataItems.item.range(of: searchText, options: .caseInsensitive) != nil
-//        })
         let listOfItems = _filteredArray(with: itemsList)
         filteredData = searchText.isEmpty ? listOfItems : listOfItems.filter { (item) in
             return item.range(of: searchText, options: .caseInsensitive) != nil
