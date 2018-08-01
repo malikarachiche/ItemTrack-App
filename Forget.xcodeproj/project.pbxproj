@@ -10,7 +10,6 @@
 		4503ADD721078D0F00C67C96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503ADD621078D0F00C67C96 /* AppDelegate.swift */; };
 		4503ADD921078D0F00C67C96 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503ADD821078D0F00C67C96 /* ViewController.swift */; };
 		4503ADDC21078D0F00C67C96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4503ADDA21078D0F00C67C96 /* Main.storyboard */; };
-		4503ADDF21078D0F00C67C96 /* Forget.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4503ADDD21078D0F00C67C96 /* Forget.xcdatamodeld */; };
 		4503ADE121078D1100C67C96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4503ADE021078D1100C67C96 /* Assets.xcassets */; };
 		4503ADE421078D1100C67C96 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4503ADE221078D1100C67C96 /* LaunchScreen.storyboard */; };
 		4503ADEF21078D1200C67C96 /* ForgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503ADEE21078D1200C67C96 /* ForgetTests.swift */; };
@@ -18,6 +17,11 @@
 		4503AE0C210A343A00C67C96 /* CustomListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE0B210A343A00C67C96 /* CustomListViewController.swift */; };
 		4503AE10210A905600C67C96 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE0F210A905600C67C96 /* ItemModel.swift */; };
 		4503AE14210BDB6F00C67C96 /* PreMadeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE13210BDB6F00C67C96 /* PreMadeListViewController.swift */; };
+		4503AE1A210FD84D00C67C96 /* SecondTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE19210FD84D00C67C96 /* SecondTableViewController.swift */; };
+		4503AE1D2110CF9900C67C96 /* Forget.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE1B2110CF9800C67C96 /* Forget.xcdatamodeld */; };
+		4503AE1F2110DEC900C67C96 /* DataAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE1E2110DEC900C67C96 /* DataAlarmViewController.swift */; };
+		45253C4B211223C500F96A99 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45253C4A211223C500F96A99 /* CoreDataHelper.swift */; };
+		456F206221124D2400744C03 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45253C4A211223C500F96A99 /* CoreDataHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +46,6 @@
 		4503ADD621078D0F00C67C96 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4503ADD821078D0F00C67C96 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4503ADDB21078D0F00C67C96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		4503ADDE21078D0F00C67C96 /* Forget.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Forget.xcdatamodel; sourceTree = "<group>"; };
 		4503ADE021078D1100C67C96 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4503ADE321078D1100C67C96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4503ADE521078D1200C67C96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -55,6 +58,10 @@
 		4503AE0B210A343A00C67C96 /* CustomListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomListViewController.swift; sourceTree = "<group>"; };
 		4503AE0F210A905600C67C96 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		4503AE13210BDB6F00C67C96 /* PreMadeListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreMadeListViewController.swift; sourceTree = "<group>"; };
+		4503AE19210FD84D00C67C96 /* SecondTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondTableViewController.swift; sourceTree = "<group>"; };
+		4503AE1C2110CF9800C67C96 /* Forget.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Forget.xcdatamodel; sourceTree = "<group>"; };
+		4503AE1E2110DEC900C67C96 /* DataAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAlarmViewController.swift; sourceTree = "<group>"; };
+		45253C4A211223C500F96A99 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,16 +112,14 @@
 		4503ADD521078D0F00C67C96 /* Forget */ = {
 			isa = PBXGroup;
 			children = (
-				4503AE13210BDB6F00C67C96 /* PreMadeListViewController.swift */,
-				4503AE0B210A343A00C67C96 /* CustomListViewController.swift */,
-				4503AE0F210A905600C67C96 /* ItemModel.swift */,
+				4503AE1B2110CF9800C67C96 /* Forget.xcdatamodeld */,
 				4503ADD621078D0F00C67C96 /* AppDelegate.swift */,
-				4503ADD821078D0F00C67C96 /* ViewController.swift */,
-				4503ADDA21078D0F00C67C96 /* Main.storyboard */,
+				45253C4A211223C500F96A99 /* CoreDataHelper.swift */,
+				45253C4C211223DF00F96A99 /* Controllers */,
+				45253C4D2112240C00F96A99 /* Data Models */,
+				45253C4E2112242400F96A99 /* Storyboards */,
 				4503ADE021078D1100C67C96 /* Assets.xcassets */,
-				4503ADE221078D1100C67C96 /* LaunchScreen.storyboard */,
 				4503ADE521078D1200C67C96 /* Info.plist */,
-				4503ADDD21078D0F00C67C96 /* Forget.xcdatamodeld */,
 			);
 			path = Forget;
 			sourceTree = "<group>";
@@ -135,6 +140,35 @@
 				4503ADFB21078D1200C67C96 /* Info.plist */,
 			);
 			path = ForgetUITests;
+			sourceTree = "<group>";
+		};
+		45253C4C211223DF00F96A99 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4503AE13210BDB6F00C67C96 /* PreMadeListViewController.swift */,
+				4503AE19210FD84D00C67C96 /* SecondTableViewController.swift */,
+				4503AE0B210A343A00C67C96 /* CustomListViewController.swift */,
+				4503AE1E2110DEC900C67C96 /* DataAlarmViewController.swift */,
+				4503ADD821078D0F00C67C96 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		45253C4D2112240C00F96A99 /* Data Models */ = {
+			isa = PBXGroup;
+			children = (
+				4503AE0F210A905600C67C96 /* ItemModel.swift */,
+			);
+			path = "Data Models";
+			sourceTree = "<group>";
+		};
+		45253C4E2112242400F96A99 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				4503ADDA21078D0F00C67C96 /* Main.storyboard */,
+				4503ADE221078D1100C67C96 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,7 +306,10 @@
 				4503AE14210BDB6F00C67C96 /* PreMadeListViewController.swift in Sources */,
 				4503ADD921078D0F00C67C96 /* ViewController.swift in Sources */,
 				4503ADD721078D0F00C67C96 /* AppDelegate.swift in Sources */,
-				4503ADDF21078D0F00C67C96 /* Forget.xcdatamodeld in Sources */,
+				4503AE1D2110CF9900C67C96 /* Forget.xcdatamodeld in Sources */,
+				4503AE1A210FD84D00C67C96 /* SecondTableViewController.swift in Sources */,
+				45253C4B211223C500F96A99 /* CoreDataHelper.swift in Sources */,
+				4503AE1F2110DEC900C67C96 /* DataAlarmViewController.swift in Sources */,
 				4503AE0C210A343A00C67C96 /* CustomListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,6 +318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				456F206221124D2400744C03 /* CoreDataHelper.swift in Sources */,
 				4503ADEF21078D1200C67C96 /* ForgetTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -602,12 +640,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		4503ADDD21078D0F00C67C96 /* Forget.xcdatamodeld */ = {
+		4503AE1B2110CF9800C67C96 /* Forget.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				4503ADDE21078D0F00C67C96 /* Forget.xcdatamodel */,
+				4503AE1C2110CF9800C67C96 /* Forget.xcdatamodel */,
 			);
-			currentVersion = 4503ADDE21078D0F00C67C96 /* Forget.xcdatamodel */;
+			currentVersion = 4503AE1C2110CF9800C67C96 /* Forget.xcdatamodel */;
 			path = Forget.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

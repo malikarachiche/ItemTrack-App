@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class CustomListViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
     
@@ -59,7 +60,7 @@ class CustomListViewController: UIViewController, UISearchBarDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        //itemsList = CoreDataHelper.retrieveItems()
         searchBar.delegate = (self as UISearchBarDelegate)
         customTableView.delegate = self
         customTableView.isHidden = true
