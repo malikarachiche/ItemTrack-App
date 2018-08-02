@@ -17,8 +17,6 @@ class CustomListViewController: UIViewController, UISearchBarDelegate, UITableVi
     @IBOutlet weak var setTimeButtonOutlet: UIButton!
     @IBOutlet weak var customTableView: UITableView!
     
-//    var itemsList = [Items]()
-    
     var itemsList = [
         Items(type: "Essentials", item: "Keys"),
         Items(type: "Essentials", item: "Phone"),

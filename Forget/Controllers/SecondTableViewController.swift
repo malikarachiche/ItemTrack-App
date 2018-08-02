@@ -13,7 +13,7 @@ class SecondTableViewController: UITableViewController {
     
     @IBOutlet var secondTableView: UITableView!
     
-    var itemArray: [Items]!
+    var itemArray: [PreMadeItem]!
     
     let cellID = "SecondTableViewCell"
     
@@ -23,7 +23,8 @@ class SecondTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = secondTableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
         
-        cell.textLabel?.text = itemArray[indexPath.row].item
+        
+        cell.textLabel?.text = itemArray[indexPath.row].name
         
         return cell
     }
@@ -31,6 +32,7 @@ class SecondTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(itemArray.count)
         print (itemArray)
     }
     

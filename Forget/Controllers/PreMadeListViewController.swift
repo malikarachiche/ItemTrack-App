@@ -18,64 +18,53 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
     
     let cellID = "PreMadeCell"
     var lastSelectedRow = 0
+ 
+    var itemArray = [[PreMadeItem]]()
+    var essentialArray = [PreMadeItem]()
+    var travelArray = [PreMadeItem]()
+    var workArray = [PreMadeItem]()
+    var schoolArray = [PreMadeItem]()
+    var gymArray = [PreMadeItem]()
     
-    var itemArray = [[
-        Items(type: "Essentials", item: "Keys"),
-        Items(type: "Essentials", item: "Phone"),
-        Items(type: "Essentials", item: "Headphones"),
-        Items(type: "Essentials", item: "Wallet"),
-        Items(type: "Essentials", item: "Identification"),
-        Items(type: "Essentials", item: "Charger")
-        ],
-                     [
-                        Items(type: "Travel", item: "Bags"),
-                        Items(type: "Travel", item: "Clothes"),
-                        Items(type: "Travel", item: "Electronics"),
-                        Items(type: "Travel", item: "Food"),
-                        Items(type: "Travel", item: "Toiletries")
-                        
-        ],
-                     [
-                        Items(type: "Work", item: "Laptop"),
-                        Items(type: "Work", item: "Lunch"),
-                        Items(type: "Work", item: "Presentation Materials"),
-                        Items(type: "Work", item: "Uniform")
-        ],
-                     [
-                        Items(type: "School", item: "Backpack"),
-                        Items(type: "School", item: "Homework"),
-                        Items(type: "School", item: "Pencils"),
-                        Items(type: "School", item: "Pens"),
-                        Items(type: "School", item: "Notebook"),
-                        Items(type: "School", item: "Binders"),
-                        Items(type: "School", item: "Calculator"),
-                        Items(type: "School", item: "Lunch")
-        ],
-                     [
-                        Items(type: "Gym/Athletic", item: "Gym Attire"),
-                        Items(type: "Gym/Athletic", item: "Sneakers"),
-                        Items(type: "Gym/Athletic", item: "Water"),
-                        Items(type: "Gym/Athletic", item: "Protein Shake")
-        ]
-    ]
     var filteredData: [String]!
     var typeSet = Set<String>()
-    var chosenItems = [String]()
-    
-    var essential: Essential!
-    var travel: Travel!
-    var work: Work!
-    var school: School!
-    var athletic: Athletic!
+    var chosenItems = [PreMadeItem]()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //essential = CoreDataHelper.retrieveEssentials()
+        let preMadeItems = CoreDataHelper.retrievePreMadeItems()
+        
+        for item in preMadeItems {
+            switch item.category {
+            case "Essentials":
+                essentialArray.append(item)
+            case "Travel":
+                travelArray.append(item)
+            case "Work":
+                workArray.append(item)
+            case "School":
+                schoolArray.append(item)
+            case "Gym/Athletic":
+                gymArray.append(item)
+            default:
+                print ("lol")
+
+
+            }
+        }
+        
+        itemArray.append(essentialArray)
+        itemArray.append(travelArray)
+        itemArray.append(gymArray)
+        itemArray.append(workArray)
+        itemArray.append(schoolArray)
+        
+        print (itemArray)
         
         preTableView.delegate = self
         preTableView.dataSource = self
-        essential = CoreDataHelper.newEssential()
     }
     
     override func didReceiveMemoryWarning() {
@@ -83,21 +72,21 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
         
     }
     
-    func _filteredArrayItems(with itemLists: [Items]) -> [String] {
+    func _filteredArrayItems(with itemLists: [PreMadeItem]) -> [String] {
         var filteredArray = [String]()
         
         for item in itemLists {
-            filteredArray.append(item.item)
+            filteredArray.append(item.name!)
         }
         
         return filteredArray
     }
     
-    func _filteredArrayTypes(with itemLists: [Items]) -> [String] {
+    func _filteredArrayTypes(with itemLists: [PreMadeItem]) -> [String] {
         var filteredArray = [String]()
         
         for item in itemLists {
-            typeSet.insert(item.type)
+            typeSet.insert(item.category!)
             
         }
         for item in typeSet {
@@ -112,8 +101,8 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = preTableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
-        
-        cell.textLabel?.text = itemArray[indexPath.row][0].type
+//        let cell = preTableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
+        cell.textLabel?.text = itemArray[indexPath.row][0].category
         //cell.detailTextLabel?.text = _filteredArrayItems(with: itemsList)[indexPath.row]
         
         return cell
@@ -142,6 +131,7 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBAction func toggleSwitch(_ sender: UISwitch) {
         print ("Toggled")
+        
         //print (CoreDataHelper.retrieveEssentials())
         //chosenItems.append(itemArray[lastSelectedRow])
     }

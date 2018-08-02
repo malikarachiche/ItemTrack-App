@@ -302,6 +302,7 @@
                                                     </connections>
                                                 </switch>
                                             </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="oGJ-2t-03f" secondAttribute="trailing" constant="-1" id="fvi-Au-dSg"/>
                                                 <constraint firstItem="oGJ-2t-03f" firstAttribute="centerY" secondItem="S7t-a8-6m8" secondAttribute="centerY" id="h3c-Yb-Ugt"/>

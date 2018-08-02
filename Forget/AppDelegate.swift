@@ -17,6 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let preMadeItems = CoreDataHelper.retrievePreMadeItems()
+        print(preMadeItems.count)
+        if preMadeItems.count == 0 {
+            populateCoreData()
+        }
+        
+        let customItems = CoreDataHelper.retrieveCustomItems()
+        if customItems == [] {
+//            populateCoreData()
+        }
+        
         return true
     }
 
@@ -88,6 +99,125 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    func populateCoreData() {
+        // make each coredata item before saving
+        let keys = CoreDataHelper.newPreMadeItem()
+        keys.category = "Essentials"
+        keys.name = "Keys"
+        
+        let phone = CoreDataHelper.newPreMadeItem()
+        phone.category = "Essentials"
+        phone.name = "Phone"
+        
+        let headphones = CoreDataHelper.newPreMadeItem()
+        headphones.category = "Essentials"
+        headphones.name = "Headphones"
+        
+        let wallet = CoreDataHelper.newPreMadeItem()
+        wallet.category = "Essentials"
+        wallet.name = "Wallet"
+        
+        let identification = CoreDataHelper.newPreMadeItem()
+        identification.category = "Essentials"
+        identification.name = "Identification"
+        
+        let charger = CoreDataHelper.newPreMadeItem()
+        charger.category = "Essentials"
+        charger.name = "Charger"
+        
+        let luggage = CoreDataHelper.newPreMadeItem()
+        luggage.category = "Travel"
+        luggage.name = "Luggage"
+        
+        let clothes = CoreDataHelper.newPreMadeItem()
+        clothes.category = "Travel"
+        clothes.name = "Clothes"
+        
+        let electronics = CoreDataHelper.newPreMadeItem()
+        electronics.category = "Travel"
+        electronics.name = "Electronics"
+        
+        let food = CoreDataHelper.newPreMadeItem()
+        food.category = "Travel"
+        food.name = "Food"
+        
+        let toiletries = CoreDataHelper.newPreMadeItem()
+        toiletries.category = "Travel"
+        toiletries.name = "Toiletries"
+        
+        let laptop = CoreDataHelper.newPreMadeItem()
+        laptop.category = "Work"
+        laptop.name = "Laptop"
+        
+        let lunch = CoreDataHelper.newPreMadeItem()
+        lunch.category = "Work"
+        lunch.name = "Lunch"
+        
+        let presentationMaterials = CoreDataHelper.newPreMadeItem()
+        presentationMaterials.category = "Work"
+        presentationMaterials.name = "Presentation Materials"
+        
+        let uniform = CoreDataHelper.newPreMadeItem()
+        uniform.category = "Work"
+        uniform.name = "Uniform"
+        
+        let backpack = CoreDataHelper.newPreMadeItem()
+        backpack.category = "School"
+        backpack.name = "Backpack"
+        
+        let homework = CoreDataHelper.newPreMadeItem()
+        homework.category = "School"
+        homework.name = "Homework"
+        
+        let pencils = CoreDataHelper.newPreMadeItem()
+        pencils.category = "School"
+        pencils.name = "Pencils"
+        
+        let pens = CoreDataHelper.newPreMadeItem()
+        pens.category = "School"
+        pens.name = "Pens"
+        
+        let notebook = CoreDataHelper.newPreMadeItem()
+        notebook.category = "School"
+        notebook.name = "Notebook"
+        
+        let binder = CoreDataHelper.newPreMadeItem()
+        binder.category = "School"
+        binder.name = "Binder"
+        
+        let calculator = CoreDataHelper.newPreMadeItem()
+        calculator.category = "School"
+        calculator.name = "Calculator"
+        
+        let lunches = CoreDataHelper.newPreMadeItem()
+        lunches.category = "School"
+        lunches.name = "Lunch"
+        
+        let shorts = CoreDataHelper.newPreMadeItem()
+        shorts.category = "Gym/Athletic"
+        shorts.name = "Shorts"
+        
+        let shirt = CoreDataHelper.newPreMadeItem()
+        shirt.category = "Gym/Athletic"
+        shirt.name = "Shirt"
+        
+        let sneakers = CoreDataHelper.newPreMadeItem()
+        sneakers.category = "Gym/Athletic"
+        sneakers.name = "Sneakers"
+        
+        let water = CoreDataHelper.newPreMadeItem()
+        water.category = "Gym/Athletic"
+        water.name = "Water"
+        
+        let proteinShake = CoreDataHelper.newPreMadeItem()
+        proteinShake.category = "Gym/Athletic"
+        proteinShake.name = "Protein Shake"
+        
+        CoreDataHelper.save()
+    }
+    
+
 
 }
 

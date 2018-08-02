@@ -28,34 +28,10 @@ struct CoreDataHelper {
         return customItem
     }
     
-    static func newAthletic() -> Athletic {
-        let athletic = NSEntityDescription.insertNewObject(forEntityName: "Athletic", into: context) as! Athletic
+    static func newPreMadeItem() -> PreMadeItem {
+        let preMadeItem = NSEntityDescription.insertNewObject(forEntityName: "PreMadeItem", into: context) as! PreMadeItem
         
-        return athletic
-    }
-    
-    static func newEssential() -> Essential {
-        let essential = NSEntityDescription.insertNewObject(forEntityName: "Essential", into: context) as! Essential
-        
-        return essential
-    }
-    
-    static func newSchool() -> School {
-        let school = NSEntityDescription.insertNewObject(forEntityName: "School", into: context) as! School
-        
-        return school
-    }
-    
-    static func newTravel() -> Travel {
-        let travel = NSEntityDescription.insertNewObject(forEntityName: "Travel", into: context) as! Travel
-        
-        return travel
-    }
-    
-    static func newWork() -> Work {
-        let work = NSEntityDescription.insertNewObject(forEntityName: "Work", into: context) as! Work
-        
-        return work
+        return preMadeItem
     }
     
     static func save() {
@@ -72,9 +48,18 @@ struct CoreDataHelper {
         save()
     }
     
-    static func retrieveEssentials() -> [Essential] {
+    static func deletePremade(item: PreMadeItem) {
+        context.delete(item)
+        save()
+    }
+
+    static func deleteItems() {
+        
+    }
+    
+    static func retrievePreMadeItems() -> [PreMadeItem] {
         do {
-            let fetchRequest = NSFetchRequest<Essential>(entityName: "Essential")
+            let fetchRequest = NSFetchRequest<PreMadeItem>(entityName: "PreMadeItem")
             let results = try context.fetch(fetchRequest)
             
             return results
@@ -85,7 +70,7 @@ struct CoreDataHelper {
         }
     }
     
-    static func retrieveItems() -> [CustomItem] {
+    static func retrieveCustomItems() -> [CustomItem] {
         do {
             let fetchRequest = NSFetchRequest<CustomItem>(entityName: "CustomItem")
             let results = try context.fetch(fetchRequest)
