@@ -27,6 +27,9 @@
 		458EACA621180A9D00B791A9 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458EACA521180A9D00B791A9 /* Colors.swift */; };
 		458EACA821180B1100B791A9 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458EACA721180B1100B791A9 /* UIView + Extension.swift */; };
 		458EACAA211812E500B791A9 /* AllSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458EACA9211812E500B791A9 /* AllSetViewController.swift */; };
+		458EACAE2118C07400B791A9 /* NewDataAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458EACAD2118C07300B791A9 /* NewDataAlarmViewController.swift */; };
+		458EACB02118F2C600B791A9 /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458EACAF2118F2C600B791A9 /* ConfirmViewController.swift */; };
+		458EACB42118FAC400B791A9 /* ConfirmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458EACB32118FAC400B791A9 /* ConfirmCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +75,9 @@
 		458EACA521180A9D00B791A9 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		458EACA721180B1100B791A9 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		458EACA9211812E500B791A9 /* AllSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSetViewController.swift; sourceTree = "<group>"; };
+		458EACAD2118C07300B791A9 /* NewDataAlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDataAlarmViewController.swift; sourceTree = "<group>"; };
+		458EACAF2118F2C600B791A9 /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
+		458EACB32118FAC400B791A9 /* ConfirmCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +165,8 @@
 			children = (
 				4503AE13210BDB6F00C67C96 /* PreMadeListViewController.swift */,
 				4503AE19210FD84D00C67C96 /* SecondTableViewController.swift */,
+				458EACAD2118C07300B791A9 /* NewDataAlarmViewController.swift */,
+				458EACAF2118F2C600B791A9 /* ConfirmViewController.swift */,
 				458EACA9211812E500B791A9 /* AllSetViewController.swift */,
 				4503AE0B210A343A00C67C96 /* CustomListViewController.swift */,
 				4503AE1E2110DEC900C67C96 /* DataAlarmViewController.swift */,
@@ -171,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				4503AE0F210A905600C67C96 /* ItemModel.swift */,
+				458EACB32118FAC400B791A9 /* ConfirmCell.swift */,
 				458EACA32117914500B791A9 /* PreMadeCell.swift */,
 				4515D9CD2114C4A00075D875 /* AlarmCell.swift */,
 			);
@@ -320,12 +329,15 @@
 				4503AE10210A905600C67C96 /* ItemModel.swift in Sources */,
 				458EACA621180A9D00B791A9 /* Colors.swift in Sources */,
 				458EACA42117914500B791A9 /* PreMadeCell.swift in Sources */,
+				458EACB02118F2C600B791A9 /* ConfirmViewController.swift in Sources */,
 				458EACAA211812E500B791A9 /* AllSetViewController.swift in Sources */,
 				4503AE14210BDB6F00C67C96 /* PreMadeListViewController.swift in Sources */,
 				4503ADD921078D0F00C67C96 /* ViewController.swift in Sources */,
+				458EACB42118FAC400B791A9 /* ConfirmCell.swift in Sources */,
 				4503ADD721078D0F00C67C96 /* AppDelegate.swift in Sources */,
 				4503AE1D2110CF9900C67C96 /* Forget.xcdatamodeld in Sources */,
 				4515D9CE2114C4A00075D875 /* AlarmCell.swift in Sources */,
+				458EACAE2118C07400B791A9 /* NewDataAlarmViewController.swift in Sources */,
 				4503AE1A210FD84D00C67C96 /* SecondTableViewController.swift in Sources */,
 				458EACA821180B1100B791A9 /* UIView + Extension.swift in Sources */,
 				45253C4B211223C500F96A99 /* CoreDataHelper.swift in Sources */,

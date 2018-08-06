@@ -285,6 +285,7 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBAction func setTimeButtonAction(_ sender: UIButton) {
         print ("Saved")
+        CoreDataHelper.save()
         //self.performSegue(withIdentifier: "SetTimeSegue", sender: self)
     }
 }
