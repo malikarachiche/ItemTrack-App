@@ -152,41 +152,43 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
             switch sender.isOn{
             case true:
                 chosenItems.append(itemArray[0])
-                print(chosenItems)
-                
             case false:
                
                 for (index, items) in chosenItems.enumerated() {
-                    for (_, item) in items.enumerated(){
-                        if item.category == "Essentials"{
+                    for (_, item) in items.enumerated() {
+                        if essentialBool == true {
+                            continue
+                        }
+                        if item.category == "Essentials" {
                              chosenItems.remove(at: index)
                              essentialBool = true
                              continue
                         }
+                        continue
                     }
                     if essentialBool == true {
                         continue
                     }
-                    
                 }
             }
         case 1:
             switch sender.isOn{
             case true:
                 chosenItems.append(itemArray[1])
-                print(chosenItems)
-            case false:
                 
+            case false:
+                // [["hello"]]
                 for (index, items) in chosenItems.enumerated() {
-                    for (_, item) in items.enumerated(){
-                        if item.category == "Travel"{
+                    for (_, item) in items.enumerated() {
+                        if travelBool == true {
+                            continue
+                        }
+                        if item.category == "Travel" {
                             chosenItems.remove(at: index)
                             travelBool = true
                             continue
                         }
-                        if travelBool == true {
-                            continue
-                        }
+                        continue
                     }
                     if travelBool == true {
                         continue
@@ -197,16 +199,20 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
             switch sender.isOn{
             case true:
                 chosenItems.append(itemArray[2])
-                print(chosenItems)
+                
             case false:
                 
                 for (index, items) in chosenItems.enumerated() {
-                    for (_, item) in items.enumerated(){
-                        if item.category == "Gym/Athletic"{
+                    for (_, item) in items.enumerated() {
+                        if gymBool == true {
+                            continue
+                        }
+                        if item.category == "Gym/Athletic" {
                             chosenItems.remove(at: index)
                             gymBool = true
                             continue
                         }
+                        continue
                     }
                     if gymBool == true {
                         continue
@@ -216,11 +222,14 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
         case 3:
             switch sender.isOn{
             case true: chosenItems.append(itemArray[3])
-                print(chosenItems)
+                
             case false:
                 
                 for (index, items) in chosenItems.enumerated() {
                     for (_, item) in items.enumerated(){
+                        if workBool == true {
+                            continue
+                        }
                         if item.category == "Work"{
                             chosenItems.remove(at: index)
                             workBool = true
@@ -236,11 +245,13 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
             switch sender.isOn{
             case true:
                 chosenItems.append(itemArray[4])
-                print(chosenItems)
             case false:
                 
                 for (index, items) in chosenItems.enumerated() {
                     for (_, item) in items.enumerated(){
+                        if schoolBool == true {
+                            continue
+                        }
                         if item.category == "School"{
                             chosenItems.remove(at: index)
                             schoolBool = true
