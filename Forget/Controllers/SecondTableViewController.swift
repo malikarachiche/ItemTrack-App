@@ -32,8 +32,6 @@ class SecondTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(itemArray.count)
-        print (itemArray)
     }
     
     override func didReceiveMemoryWarning() {

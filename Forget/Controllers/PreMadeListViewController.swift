@@ -28,7 +28,7 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
     
     var filteredData: [String]!
     var typeSet = Set<String>()
-    var chosenItems = [PreMadeItem]()
+    var chosenItems = [[PreMadeItem]]()
 
     
     override func viewDidLoad() {
@@ -50,8 +50,6 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
                 gymArray.append(item)
             default:
                 print ("lol")
-
-
             }
         }
         
@@ -60,8 +58,6 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
         itemArray.append(gymArray)
         itemArray.append(workArray)
         itemArray.append(schoolArray)
-        
-        print (itemArray)
         
         preTableView.delegate = self
         preTableView.dataSource = self
@@ -73,6 +69,7 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func _filteredArrayItems(with itemLists: [PreMadeItem]) -> [String] {
+        // filters array by items
         var filteredArray = [String]()
         
         for item in itemLists {
@@ -83,6 +80,7 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func _filteredArrayTypes(with itemLists: [PreMadeItem]) -> [String] {
+        // filters array by category
         var filteredArray = [String]()
         
         for item in itemLists {
@@ -100,10 +98,16 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = preTableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
-//        let cell = preTableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
-        cell.textLabel?.text = itemArray[indexPath.row][0].category
-        //cell.detailTextLabel?.text = _filteredArrayItems(with: itemsList)[indexPath.row]
+        let cell = preTableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! PreMadeCell
+
+        cell.topLabel?.text = itemArray[indexPath.row][0].category
+        cell.bottomLabel?.text = "Toggle the switch to select the list"
+        
+        cell.toggleSwitch?.tag = indexPath.row
+        
+        
+        
+        cell.toggleSwitch.addTarget(self, action: #selector(toggleSwitch(_:)), for: .valueChanged)
         
         return cell
     }
@@ -121,24 +125,153 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
         case "SecondSegueID":
             let destination = segue.destination as! SecondTableViewController
             destination.itemArray = itemArray[lastSelectedRow]
-//        case "SetTimeSegue":
-//            let destination = segue.destination as! DataAlarmViewController
+        case "SetTimeSegue":
+            let destination = segue.destination as! DataAlarmViewController
+            
+            destination.chosenItems = chosenItems
+            
         default:
             print("")
         }
 
     }
     
-    @IBAction func toggleSwitch(_ sender: UISwitch) {
-        print ("Toggled")
-        
-        //print (CoreDataHelper.retrieveEssentials())
-        //chosenItems.append(itemArray[lastSelectedRow])
-    }
     
+    @objc func toggleSwitch(_ sender: UISwitch) {
+        var essentialBool = false
+        var travelBool = false
+        var workBool = false
+        var schoolBool = false
+        var gymBool = false
+       
+        switch sender.tag{
+            
+        case 0:
+            switch sender.isOn{
+            case true:
+                chosenItems.append(itemArray[0])
+                print(chosenItems)
+                
+            case false:
+               
+                for (index, items) in chosenItems.enumerated() {
+                    for (_, item) in items.enumerated(){
+                        if item.category == "Essentials"{
+                             chosenItems.remove(at: index)
+                             essentialBool = true
+                             continue
+                        }
+                    }
+                    if essentialBool == true {
+                        continue
+                    }
+                    
+                }
+            }
+        case 1:
+            switch sender.isOn{
+            case true:
+                chosenItems.append(itemArray[1])
+                print(chosenItems)
+            case false:
+                
+                for (index, items) in chosenItems.enumerated() {
+                    for (_, item) in items.enumerated(){
+                        if item.category == "Travel"{
+                            chosenItems.remove(at: index)
+                            travelBool = true
+                            continue
+                        }
+                        if travelBool == true {
+                            continue
+                        }
+                    }
+                    if travelBool == true {
+                        continue
+                    }
+                }
+            }
+        case 2:
+            switch sender.isOn{
+            case true:
+                chosenItems.append(itemArray[2])
+                print(chosenItems)
+            case false:
+                
+                for (index, items) in chosenItems.enumerated() {
+                    for (_, item) in items.enumerated(){
+                        if item.category == "Gym/Athletic"{
+                            chosenItems.remove(at: index)
+                            gymBool = true
+                            continue
+                        }
+                    }
+                    if gymBool == true {
+                        continue
+                    }
+                }
+            }
+        case 3:
+            switch sender.isOn{
+            case true: chosenItems.append(itemArray[3])
+                print(chosenItems)
+            case false:
+                
+                for (index, items) in chosenItems.enumerated() {
+                    for (_, item) in items.enumerated(){
+                        if item.category == "Work"{
+                            chosenItems.remove(at: index)
+                            workBool = true
+                            continue
+                        }
+                    }
+                    if workBool == true {
+                        continue
+                    }
+                }
+            }
+        case 4:
+            switch sender.isOn{
+            case true:
+                chosenItems.append(itemArray[4])
+                print(chosenItems)
+            case false:
+                
+                for (index, items) in chosenItems.enumerated() {
+                    for (_, item) in items.enumerated(){
+                        if item.category == "School"{
+                            chosenItems.remove(at: index)
+                            schoolBool = true
+                            continue
+                        }
+                    }
+                    if schoolBool == true {
+                        continue
+                    }
+                }
+            }
+        default: break
+        }
+        
+//            if sender.isOn == true {
+//                // if switch is toggled on, then append whatever is in that array along with the category (the whole array of that type) to the chosen array.
+//                chosenItems.append(itemArray[lastSelectedRow])
+//                print (chosenItems)
+//                //print (itemArray[lastSelectedRow])
+//            }
+//            else {
+//                chosenItems.remove(at: lastSelectedRow)
+//                print (chosenItems)
+//
+//            }
+//            CoreDataHelper.save()
+//            //print (CoreDataHelper.retrieveEssentials())
+//            //chosenItems.append(itemArray[lastSelectedRow])
+        
+        }
     
     @IBAction func setTimeButtonAction(_ sender: UIButton) {
-        CoreDataHelper.save()
         print ("Saved")
+        //self.performSegue(withIdentifier: "SetTimeSegue", sender: self)
     }
 }
