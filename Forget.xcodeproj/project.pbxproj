@@ -24,6 +24,9 @@
 		45253C4B211223C500F96A99 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45253C4A211223C500F96A99 /* CoreDataHelper.swift */; };
 		456F206221124D2400744C03 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45253C4A211223C500F96A99 /* CoreDataHelper.swift */; };
 		458EACA42117914500B791A9 /* PreMadeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458EACA32117914500B791A9 /* PreMadeCell.swift */; };
+		458EACA621180A9D00B791A9 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458EACA521180A9D00B791A9 /* Colors.swift */; };
+		458EACA821180B1100B791A9 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458EACA721180B1100B791A9 /* UIView + Extension.swift */; };
+		458EACAA211812E500B791A9 /* AllSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458EACA9211812E500B791A9 /* AllSetViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +69,9 @@
 		4515D9CD2114C4A00075D875 /* AlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
 		45253C4A211223C500F96A99 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		458EACA32117914500B791A9 /* PreMadeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreMadeCell.swift; sourceTree = "<group>"; };
+		458EACA521180A9D00B791A9 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		458EACA721180B1100B791A9 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
+		458EACA9211812E500B791A9 /* AllSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSetViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +124,9 @@
 			children = (
 				4503AE1B2110CF9800C67C96 /* Forget.xcdatamodeld */,
 				4503ADD621078D0F00C67C96 /* AppDelegate.swift */,
+				458EACA521180A9D00B791A9 /* Colors.swift */,
 				45253C4A211223C500F96A99 /* CoreDataHelper.swift */,
+				458EACA721180B1100B791A9 /* UIView + Extension.swift */,
 				45253C4C211223DF00F96A99 /* Controllers */,
 				45253C4D2112240C00F96A99 /* Data Models */,
 				45253C4E2112242400F96A99 /* Storyboards */,
@@ -151,6 +159,7 @@
 			children = (
 				4503AE13210BDB6F00C67C96 /* PreMadeListViewController.swift */,
 				4503AE19210FD84D00C67C96 /* SecondTableViewController.swift */,
+				458EACA9211812E500B791A9 /* AllSetViewController.swift */,
 				4503AE0B210A343A00C67C96 /* CustomListViewController.swift */,
 				4503AE1E2110DEC900C67C96 /* DataAlarmViewController.swift */,
 				4503ADD821078D0F00C67C96 /* ViewController.swift */,
@@ -309,13 +318,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				4503AE10210A905600C67C96 /* ItemModel.swift in Sources */,
+				458EACA621180A9D00B791A9 /* Colors.swift in Sources */,
 				458EACA42117914500B791A9 /* PreMadeCell.swift in Sources */,
+				458EACAA211812E500B791A9 /* AllSetViewController.swift in Sources */,
 				4503AE14210BDB6F00C67C96 /* PreMadeListViewController.swift in Sources */,
 				4503ADD921078D0F00C67C96 /* ViewController.swift in Sources */,
 				4503ADD721078D0F00C67C96 /* AppDelegate.swift in Sources */,
 				4503AE1D2110CF9900C67C96 /* Forget.xcdatamodeld in Sources */,
 				4515D9CE2114C4A00075D875 /* AlarmCell.swift in Sources */,
 				4503AE1A210FD84D00C67C96 /* SecondTableViewController.swift in Sources */,
+				458EACA821180B1100B791A9 /* UIView + Extension.swift in Sources */,
 				45253C4B211223C500F96A99 /* CoreDataHelper.swift in Sources */,
 				4503AE1F2110DEC900C67C96 /* DataAlarmViewController.swift in Sources */,
 				4503AE0C210A343A00C67C96 /* CustomListViewController.swift in Sources */,

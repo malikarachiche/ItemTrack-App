@@ -34,6 +34,8 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.isHidden = false
+        
         let preMadeItems = CoreDataHelper.retrievePreMadeItems()
         
         for item in preMadeItems {
