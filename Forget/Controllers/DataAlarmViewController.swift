@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import UserNotifications
 
 class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
     
@@ -58,7 +59,7 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
             currentTextField.text = dateFormatter.string(from: datePicker.date)
            
             // update choosen items at selected index
-//            chosenItems[(selectedIndex?.row)!].date = datePicker.date
+            //chosenItems[(selectedIndex?.row)!].date = datePicker.date
         }
         
     }
@@ -82,7 +83,6 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Did select Cell: \(indexPath.row)")
-        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -124,6 +124,19 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
 //
     @IBAction func alarmButton(_ sender: UIButton) {
         
+        let content = UNMutableNotificationContent()
+        // Fill these in with appropriate data later
+        content.title = "Get your Items!"
+        content.body = "Body"
+        
+        content.sound = UNNotificationSound.default()
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: "ItemListIdentifier", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+
     }
     
 }

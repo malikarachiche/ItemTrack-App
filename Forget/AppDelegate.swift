@@ -8,14 +8,36 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,  UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
-
+    
+    // Allows Notifications while the app is running
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .sound])
+    }
+    // Response to the notification
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        if response.notification.request.identifier == "ItemListIdentifier" {
+            print ("Handling notification with identifier 'ItemListIdentifier'")
+        }
+        completionHandler()
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        UNUserNotificationCenter.current().delegate = self
+        
+        // Requests user if they will allow Notifications the first time they launch the app.
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+            print("Granted: \(granted)")
+        }
+        
+        
         // Override point for customization after application launch.
         let preMadeItems = CoreDataHelper.retrievePreMadeItems()
         print(preMadeItems.count)

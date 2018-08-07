@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import UserNotifications
 
 class ConfirmViewController: UITableViewController {
     
@@ -17,7 +18,6 @@ class ConfirmViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Loaded")
     
     }
     
