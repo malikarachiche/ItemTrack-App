@@ -266,21 +266,6 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
         default: break
         }
         
-//            if sender.isOn == true {
-//                // if switch is toggled on, then append whatever is in that array along with the category (the whole array of that type) to the chosen array.
-//                chosenItems.append(itemArray[lastSelectedRow])
-//                print (chosenItems)
-//                //print (itemArray[lastSelectedRow])
-//            }
-//            else {
-//                chosenItems.remove(at: lastSelectedRow)
-//                print (chosenItems)
-//
-//            }
-//            CoreDataHelper.save()
-//            //print (CoreDataHelper.retrieveEssentials())
-//            //chosenItems.append(itemArray[lastSelectedRow])
-        
         }
     
     @IBAction func setTimeButtonAction(_ sender: UIButton) {

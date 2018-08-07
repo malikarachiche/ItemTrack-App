@@ -40,6 +40,8 @@ class ConfirmViewController: UITableViewController {
         
         cell.itemLabel?.text = chosenItems[indexPath.section][indexPath.row].name
         
+        
+        
         return cell
     }
     

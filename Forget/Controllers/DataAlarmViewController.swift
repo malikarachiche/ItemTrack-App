@@ -12,13 +12,9 @@ import UserNotifications
 
 class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
     
-    
     @IBOutlet var alarmTableView: UITableView!
     
     private var datePicker = UIDatePicker()
-    // [["Hello"], ["HI], ["HOla"]]
-    
-    
     
     var chosenItems = [[PreMadeItem]]()
     let dateFormatter = DateFormatter()
@@ -58,14 +54,13 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
         if let currentTextField = currentTextField {
             currentTextField.text = dateFormatter.string(from: datePicker.date)
            
-            // update choosen items at selected index
+            // update chosen items at selected index
             //chosenItems[(selectedIndex?.row)!].date = datePicker.date
         }
         
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        print("Hello")
         self.currentTextField = textField
         
         let cell: UITableViewCell = textField.superview!.superview as! UITableViewCell
@@ -101,7 +96,7 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
         cell.dateTextField.delegate = self
         
         //cell.detailTextLabel?.text = _filteredArrayItems(with: itemsList)[indexPath.row]
-        
+        CoreDataHelper.save()
         return cell
     }
     
@@ -117,11 +112,7 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
         }
         
     }
-    
-//    override func delete(_ sender: Any?) {
-//        CoreDataHelper.delete(item: chosenItems[(selectedIndex?.row)!][selectedIndex])
-//    }
-//
+
     @IBAction func alarmButton(_ sender: UIButton) {
         
         let content = UNMutableNotificationContent()
