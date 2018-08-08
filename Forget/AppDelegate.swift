@@ -24,7 +24,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,  UNUserNotificationCenter
         
         if response.notification.request.identifier == "ItemListIdentifier" {
 //            self.performSegueWithIdentifier("GoToViewController", sender:self)
-
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let navigationController = self.window?.rootViewController as? UINavigationController
+            let destinationController = storyboard.instantiateViewController(withIdentifier: "Confirm") as? ConfirmViewController
+            navigationController?.pushViewController(destinationController!, animated: false)
+            
             print ("Handling notification with identifier 'ItemListIdentifier'")
             
             // add segue here if this fails, try inside the completion handler
@@ -36,12 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,  UNUserNotificationCenter
     }
     
     private func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-        if application.applicationState == .inactive || application.applicationState == .background {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let navigationController = self.window?.rootViewController as? UINavigationController
-            let destinationController = storyboard.instantiateViewController(withIdentifier: "dashboard") as? ConfirmViewController
-            navigationController?.pushViewController(destinationController!, animated: false)
-        }
+        
     }
     
     

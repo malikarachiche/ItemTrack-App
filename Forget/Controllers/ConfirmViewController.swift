@@ -14,12 +14,68 @@ class ConfirmViewController: UITableViewController {
     
     
     
-    var chosenItems = [[PreMadeItem]]()
+    var essentialArray = [PreMadeItem]()
+    var travelArray = [PreMadeItem]()
+    var workArray = [PreMadeItem]()
+    var schoolArray = [PreMadeItem]()
+    var gymArray = [PreMadeItem]()
+    var newArray = [[PreMadeItem]]()
+    var chosenItems = [[PreMadeItem]]() {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        fetchData()
     }
+    
+    func fetchData()  {
+        let coreData = CoreDataHelper.retrievePreMadeItems()
+        
+        newArray = []
+        chosenItems = []
+        
+        for item in coreData {
+            switch item.category {
+            case "Essentials":
+                essentialArray.append(item)
+            case "Travel":
+                travelArray.append(item)
+            case "Work":
+                workArray.append(item)
+            case "School":
+                schoolArray.append(item)
+            case "Gym/Athletic":
+                gymArray.append(item)
+            default:
+                print ("lol")
+            }
+        }
+        
+        newArray.append(essentialArray)
+        newArray.append(travelArray)
+        newArray.append(gymArray)
+        newArray.append(workArray)
+        newArray.append(schoolArray)
+        
+        for item in newArray {
+            if item.count > 0 {
+                let itm : PreMadeItem? = item[0]
+                if itm != nil{
+                    if item[0].reminder == true {
+                        chosenItems.append(item)
+                        
+                    }
+                }
+            }
+        }
+        CoreDataHelper.save()
+    }
+    
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
@@ -44,13 +100,25 @@ class ConfirmViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var zeroIndexCount: Int = 0
         
         if tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCellAccessoryType.checkmark {
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.none
+            zeroIndexCount -= 1
+            
+            
         }
         else {
-            
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.checkmark
+            zeroIndexCount += 1
+            
+            if zeroIndexCount == chosenItems[0].count {
+                let alert = UIAlertController(title: "Congrats!", message: "You Got Everything!", preferredStyle: UIAlertControllerStyle.alert)
+                present(alert, animated: true)
+                alert.addAction(UIAlertAction(title: "Esketit", style: UIAlertActionStyle.cancel, handler: nil))
+                return
+            }
+           
         }
         
     }

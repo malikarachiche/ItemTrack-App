@@ -101,6 +101,22 @@
             </objects>
             <point key="canvasLocation" x="776.79999999999995" y="-195.81280788177341"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vTe-qL-6Py">
+            <objects>
+                <navigationController id="mvT-ok-MDC" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="p9M-eM-KkE">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="XB0-WO-A2o" kind="relationship" relationship="rootViewController" id="Qhf-GC-lYH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qBV-cY-zZ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-162" y="618"/>
+        </scene>
         <!--Custom List View Controller-->
         <scene sceneID="1Zt-lc-93e">
             <objects>
@@ -110,7 +126,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UbF-Yh-c9i">
-                                <rect key="frame" x="16" y="708" width="343" height="50"/>
+                                <rect key="frame" x="16" y="659" width="343" height="50"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Wdm-Gx-AGc"/>
@@ -132,7 +148,7 @@
                                 </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ByL-1V-xDn">
-                                <rect key="frame" x="0.0" y="144" width="375" height="564"/>
+                                <rect key="frame" x="0.0" y="144" width="375" height="515"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="W0p-dD-jRX">
@@ -161,6 +177,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PfM-5S-oex"/>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="7bX-y0-a7A">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="UiI-2C-UjA">
+                            <connections>
+                                <action selector="addButton:" destination="XB0-WO-A2o" id="eWg-qP-Csz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="CustomTableView" destination="ByL-1V-xDn" id="a8a-XZ-PfF"/>
                         <outlet property="customTableView" destination="ByL-1V-xDn" id="vWK-U8-6fn"/>
@@ -332,7 +357,6 @@
                                 </state>
                                 <connections>
                                     <action selector="setTimeButtonAction:" destination="m6E-cP-nV9" eventType="touchUpInside" id="owq-Fy-Q0N"/>
-                                    <segue destination="qRD-3l-7jt" kind="show" identifier="SetTimeSegue" id="1k9-AG-aV7"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="t9X-IV-bJk">
@@ -410,6 +434,7 @@
                         <outlet property="preTableView" destination="t9X-IV-bJk" id="aHV-8l-IfK"/>
                         <outlet property="setTimeButton" destination="d3a-Z1-WMW" id="3WE-Uu-zjV"/>
                         <segue destination="s6B-Ns-uSc" kind="show" identifier="SecondSegueID" id="2fv-bX-VcI"/>
+                        <segue destination="qRD-3l-7jt" kind="show" identifier="SetTimeSegue" id="1Ps-AH-4dK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j0S-1r-maX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -474,6 +499,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1k9-AG-aV7"/>
+        <segue reference="YfS-Ii-hEn"/>
+        <segue reference="Qhf-GC-lYH"/>
     </inferredMetricsTieBreakers>
 </document>

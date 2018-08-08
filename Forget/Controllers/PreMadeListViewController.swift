@@ -34,6 +34,12 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         self.navigationController?.navigationBar.isHidden = false
         
         let preMadeItems = CoreDataHelper.retrievePreMadeItems()
@@ -61,17 +67,27 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
         itemArray.append(workArray)
         itemArray.append(schoolArray)
         
+        
+        
         // go through each category in the item array
         // if the reminder of the first item is true add it to the selected array
         
         for items in itemArray {
-            if items[0].reminder == true {
-                chosenItems.append(items)
+            if items.count > 0 {
+                let itm: PreMadeItem? = items[0]
+                if itm != nil{
+                    if items[0].reminder == true {
+                        chosenItems.append(items)
+                        CoreDataHelper.save()
+                    }
+                }
             }
+            
         }
         
         preTableView.delegate = self
         preTableView.dataSource = self
+        preTableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -312,7 +328,14 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     @IBAction func setTimeButtonAction(_ sender: UIButton) {
-       
+        
+        if chosenItems == [] {
+            let alert = UIAlertController(title: "Error", message: "Enter in something", preferredStyle: UIAlertControllerStyle.alert)
+            present(alert, animated: true)
+            alert.addAction(UIAlertAction(title: "Return", style: UIAlertActionStyle.cancel, handler: nil))
+            return
+        }
+        self.performSegue(withIdentifier: "SetTimeSegue", sender: self)
         CoreDataHelper.save()
         //self.performSegue(withIdentifier: "SetTimeSegue", sender: self)
     }

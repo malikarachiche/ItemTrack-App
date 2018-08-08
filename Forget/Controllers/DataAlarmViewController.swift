@@ -31,7 +31,30 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        fetchData()
+        
+        dateFormatter.dateFormat = "h:mm a"
+        datePicker = UIDatePicker()
+        datePicker.datePickerMode = .time
+        datePicker.addTarget(self, action: #selector(DataAlarmViewController.dateChanged(datePicker:)), for: .valueChanged)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(DataAlarmViewController.viewTapped(gestureRecognizer:)))
+        
+        view.addGestureRecognizer(tapGesture)
+        
+        //dateTextField.inputView = datePicker
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    func fetchData()  {
         let coreData = CoreDataHelper.retrievePreMadeItems()
+       
+        newArray = []
+        chosenItems = []
         
         for item in coreData {
             switch item.category {
@@ -57,29 +80,18 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
         newArray.append(schoolArray)
         
         for item in newArray {
-            if item[0].reminder == true {
-                chosenItems.append(item)
+            if item.count > 0 {
+                let itm : PreMadeItem? = item[0]
+                if itm != nil{
+                    if item[0].reminder == true {
+                        chosenItems.append(item)
+                        
+                    }
+                }
             }
         }
-        
-        dateFormatter.dateFormat = "h:mm a"
-        datePicker = UIDatePicker()
-        datePicker.datePickerMode = .time
-        datePicker.addTarget(self, action: #selector(DataAlarmViewController.dateChanged(datePicker:)), for: .valueChanged)
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(DataAlarmViewController.viewTapped(gestureRecognizer:)))
-        
-        view.addGestureRecognizer(tapGesture)
-        
-        //dateTextField.inputView = datePicker
-        
+        CoreDataHelper.save()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    
     
     @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
         view.endEditing(true)
@@ -127,6 +139,7 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
         let chosen = chosenItems[indexPath.row]
         
         cell.titleLabel?.text = chosen[0].category
+        
         let text = "\(chosen[0].name!), \(chosen[1].name!)..."
         
         
@@ -146,7 +159,14 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == UITableViewCellEditingStyle.delete {
-            chosenItems.remove(at: indexPath.row)
+            
+            //chosenItems.remove(at: indexPath.row)
+            let chosen = chosenItems[indexPath.row]
+            chosen.forEach { (item) in
+                item.reminder = false
+                CoreDataHelper.save()
+            }
+            fetchData()
             tableView.reloadData()
         }
     }
@@ -157,7 +177,7 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
         switch identifier {
         case "ConfirmSegue":
             let destination = segue.destination as! ConfirmViewController
-            destination.chosenItems = chosenItems
+//            destination.chosenItems = chosenItems
             print(chosenItems)
         default:
             print("")
@@ -168,6 +188,7 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
     @IBAction func alarmButton(_ sender: UIButton) {
         
         //Here i want to add the times to all the premade items
+        
         
         
         //MARK: NOTIFICATION SETUP
