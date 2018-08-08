@@ -190,7 +190,6 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
         //Here i want to add the times to all the premade items
         
         
-        
         //MARK: NOTIFICATION SETUP
         
         let content = UNMutableNotificationContent()

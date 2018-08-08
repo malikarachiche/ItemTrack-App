@@ -21,8 +21,10 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         //self.navigationController?.navigationBar.isHidden = true
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.white;
 
-        view.setGradientBackground(colorOne: Colors.fadedPink, colorTwo: Colors.offWhite)
+        view.setGradientBackground(colorOne: Colors.babyBlue, colorTwo: Colors.offWhite)
         
     }
     

@@ -12,7 +12,7 @@ import UserNotifications
 
 class ConfirmViewController: UITableViewController {
     
-    
+    var maxCount: Int = 0
     
     var essentialArray = [PreMadeItem]()
     var travelArray = [PreMadeItem]()
@@ -27,10 +27,17 @@ class ConfirmViewController: UITableViewController {
     }
     
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         fetchData()
+        
+        for item in chosenItems {
+            maxCount += item.count
+            
+        }
     }
     
     func fetchData()  {
@@ -75,6 +82,7 @@ class ConfirmViewController: UITableViewController {
         }
         CoreDataHelper.save()
     }
+   
     
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -100,19 +108,20 @@ class ConfirmViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var zeroIndexCount: Int = 0
+        var count: Int = 0
+        
         
         if tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCellAccessoryType.checkmark {
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.none
-            zeroIndexCount -= 1
+            count -= 1
             
             
         }
         else {
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.checkmark
-            zeroIndexCount += 1
+            count += 1
             
-            if zeroIndexCount == chosenItems[0].count {
+            if count == maxCount {
                 let alert = UIAlertController(title: "Congrats!", message: "You Got Everything!", preferredStyle: UIAlertControllerStyle.alert)
                 present(alert, animated: true)
                 alert.addAction(UIAlertAction(title: "Esketit", style: UIAlertActionStyle.cancel, handler: nil))

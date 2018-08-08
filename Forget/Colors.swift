@@ -16,4 +16,6 @@ struct Colors {
     static let offWhite = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0)
     
     static let fadedBlue = UIColor(red:0.27, green:0.55, blue:0.92, alpha:1.0)
+    
+    static let babyBlue = UIColor(red:0.46, green:0.60, blue:0.80, alpha:1.0)
 }

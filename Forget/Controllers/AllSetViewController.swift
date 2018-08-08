@@ -15,7 +15,7 @@ class AllSetViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        view.setGradientBackground(colorOne: Colors.fadedPink, colorTwo: Colors.offWhite)
+        //view.setGradientBackground(colorOne: Colors.fadedPink, colorTwo: Colors.offWhite)
         
     }
     
