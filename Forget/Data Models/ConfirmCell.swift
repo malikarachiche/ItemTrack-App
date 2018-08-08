@@ -13,8 +13,4 @@ class ConfirmCell: UITableViewCell {
     
     @IBOutlet weak var itemLabel: UILabel!
     
-    @IBAction func confirmSwitch(_ sender: UISwitch) {
-        print ("Confirm Switch Toggled")
-        
-    }
 }

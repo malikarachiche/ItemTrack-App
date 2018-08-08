@@ -23,10 +23,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate,  UNUserNotificationCenter
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
         if response.notification.request.identifier == "ItemListIdentifier" {
+//            self.performSegueWithIdentifier("GoToViewController", sender:self)
+
             print ("Handling notification with identifier 'ItemListIdentifier'")
+            
+            // add segue here if this fails, try inside the completion handler
         }
+        // Write the function definition, and code that runs
+        // This is just the function call
+        
         completionHandler()
     }
+    
+    private func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        if application.applicationState == .inactive || application.applicationState == .background {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let navigationController = self.window?.rootViewController as? UINavigationController
+            let destinationController = storyboard.instantiateViewController(withIdentifier: "dashboard") as? ConfirmViewController
+            navigationController?.pushViewController(destinationController!, animated: false)
+        }
+    }
+    
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -127,114 +145,142 @@ class AppDelegate: UIResponder, UIApplicationDelegate,  UNUserNotificationCenter
         let keys = CoreDataHelper.newPreMadeItem()
         keys.category = "Essentials"
         keys.name = "Keys"
+        keys.reminder = false
         
         let phone = CoreDataHelper.newPreMadeItem()
         phone.category = "Essentials"
         phone.name = "Phone"
+        phone.reminder = false
         
         let headphones = CoreDataHelper.newPreMadeItem()
         headphones.category = "Essentials"
         headphones.name = "Headphones"
+        headphones.reminder = false
         
         let wallet = CoreDataHelper.newPreMadeItem()
         wallet.category = "Essentials"
         wallet.name = "Wallet"
+        wallet.reminder = false
         
         let identification = CoreDataHelper.newPreMadeItem()
         identification.category = "Essentials"
         identification.name = "Identification"
+        identification.reminder = false
         
         let charger = CoreDataHelper.newPreMadeItem()
         charger.category = "Essentials"
         charger.name = "Charger"
+        charger.reminder = false
         
         let luggage = CoreDataHelper.newPreMadeItem()
         luggage.category = "Travel"
         luggage.name = "Luggage"
+        luggage.reminder = false
         
         let clothes = CoreDataHelper.newPreMadeItem()
         clothes.category = "Travel"
         clothes.name = "Clothes"
+        clothes.reminder = false
         
         let electronics = CoreDataHelper.newPreMadeItem()
         electronics.category = "Travel"
         electronics.name = "Electronics"
+        electronics.reminder = false
         
         let food = CoreDataHelper.newPreMadeItem()
         food.category = "Travel"
         food.name = "Food"
+        food.reminder = false
         
         let toiletries = CoreDataHelper.newPreMadeItem()
         toiletries.category = "Travel"
         toiletries.name = "Toiletries"
+        toiletries.reminder = false
         
         let laptop = CoreDataHelper.newPreMadeItem()
         laptop.category = "Work"
         laptop.name = "Laptop"
+        laptop.reminder = false
         
         let lunch = CoreDataHelper.newPreMadeItem()
         lunch.category = "Work"
         lunch.name = "Lunch"
+        lunch.reminder = false
         
         let presentationMaterials = CoreDataHelper.newPreMadeItem()
         presentationMaterials.category = "Work"
         presentationMaterials.name = "Presentation Materials"
+        presentationMaterials.reminder = false
         
         let uniform = CoreDataHelper.newPreMadeItem()
         uniform.category = "Work"
         uniform.name = "Uniform"
+        uniform.reminder = false
         
         let backpack = CoreDataHelper.newPreMadeItem()
         backpack.category = "School"
         backpack.name = "Backpack"
+        backpack.reminder = false
         
         let homework = CoreDataHelper.newPreMadeItem()
         homework.category = "School"
         homework.name = "Homework"
+        homework.reminder = false
         
         let pencils = CoreDataHelper.newPreMadeItem()
         pencils.category = "School"
         pencils.name = "Pencils"
+        pencils.reminder = false
         
         let pens = CoreDataHelper.newPreMadeItem()
         pens.category = "School"
         pens.name = "Pens"
+        pens.reminder = false
         
         let notebook = CoreDataHelper.newPreMadeItem()
         notebook.category = "School"
         notebook.name = "Notebook"
+        notebook.reminder = false
         
         let binder = CoreDataHelper.newPreMadeItem()
         binder.category = "School"
         binder.name = "Binder"
+        binder.reminder = false
         
         let calculator = CoreDataHelper.newPreMadeItem()
         calculator.category = "School"
         calculator.name = "Calculator"
+        calculator.reminder = false
         
         let lunches = CoreDataHelper.newPreMadeItem()
         lunches.category = "School"
         lunches.name = "Lunch"
+        lunches.reminder = false
         
         let shorts = CoreDataHelper.newPreMadeItem()
         shorts.category = "Gym/Athletic"
         shorts.name = "Shorts"
+        shorts.reminder = false
         
         let shirt = CoreDataHelper.newPreMadeItem()
         shirt.category = "Gym/Athletic"
         shirt.name = "Shirt"
+        shirt.reminder = false
         
         let sneakers = CoreDataHelper.newPreMadeItem()
         sneakers.category = "Gym/Athletic"
         sneakers.name = "Sneakers"
+        sneakers.reminder = false
         
         let water = CoreDataHelper.newPreMadeItem()
         water.category = "Gym/Athletic"
         water.name = "Water"
+        water.reminder = false
         
         let proteinShake = CoreDataHelper.newPreMadeItem()
         proteinShake.category = "Gym/Athletic"
         proteinShake.name = "Protein Shake"
+        proteinShake.reminder = false
         
         CoreDataHelper.save()
     }

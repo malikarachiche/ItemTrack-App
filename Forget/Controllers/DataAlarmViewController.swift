@@ -16,6 +16,12 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
     
     private var datePicker = UIDatePicker()
     
+    var essentialArray = [PreMadeItem]()
+    var travelArray = [PreMadeItem]()
+    var workArray = [PreMadeItem]()
+    var schoolArray = [PreMadeItem]()
+    var gymArray = [PreMadeItem]()
+    var newArray = [[PreMadeItem]]()
     var chosenItems = [[PreMadeItem]]()
     let dateFormatter = DateFormatter()
     
@@ -24,6 +30,37 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let coreData = CoreDataHelper.retrievePreMadeItems()
+        
+        for item in coreData {
+            switch item.category {
+            case "Essentials":
+                essentialArray.append(item)
+            case "Travel":
+                travelArray.append(item)
+            case "Work":
+                workArray.append(item)
+            case "School":
+                schoolArray.append(item)
+            case "Gym/Athletic":
+                gymArray.append(item)
+            default:
+                print ("lol")
+            }
+        }
+        
+        newArray.append(essentialArray)
+        newArray.append(travelArray)
+        newArray.append(gymArray)
+        newArray.append(workArray)
+        newArray.append(schoolArray)
+        
+        for item in newArray {
+            if item[0].reminder == true {
+                chosenItems.append(item)
+            }
+        }
         
         dateFormatter.dateFormat = "h:mm a"
         datePicker = UIDatePicker()
@@ -62,16 +99,16 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.currentTextField = textField
-        
-        let cell: UITableViewCell = textField.superview!.superview as! UITableViewCell
-        
-        selectedIndex = tableView.indexPath(for: cell)
-        
+     
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         self.currentTextField = nil
+        let cell: UITableViewCell = textField.superview!.superview as! UITableViewCell
         
+        selectedIndex = tableView.indexPath(for: cell)
+        
+        chosenItems[(selectedIndex?.row)!][0].setTime = datePicker.date
         CoreDataHelper.save()
     }
     
@@ -89,15 +126,29 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
     
         let chosen = chosenItems[indexPath.row]
         
-        cell.titleLabel?.text = chosen[indexPath.row].category
-        cell.subLabel?.text = chosen[indexPath.row].name! + "..."
+        cell.titleLabel?.text = chosen[0].category
+        let text = "\(chosen[0].name!), \(chosen[1].name!)..."
+        
+        
+        cell.subLabel.text = text
         cell.dateTextField.inputView = datePicker
+        if chosen[0].setTime != nil {
+            cell.dateTextField.text = dateFormatter.string(from: chosen[0].setTime!)
+        }
         //cell.dateTextField.text = dateFormatter.string(from: datePicker.date)
         cell.dateTextField.delegate = self
         
         //cell.detailTextLabel?.text = _filteredArrayItems(with: itemsList)[indexPath.row]
         CoreDataHelper.save()
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            chosenItems.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -107,6 +158,7 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
         case "ConfirmSegue":
             let destination = segue.destination as! ConfirmViewController
             destination.chosenItems = chosenItems
+            print(chosenItems)
         default:
             print("")
         }
@@ -115,14 +167,21 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
 
     @IBAction func alarmButton(_ sender: UIButton) {
         
+        //Here i want to add the times to all the premade items
+        
+        
+        //MARK: NOTIFICATION SETUP
+        
         let content = UNMutableNotificationContent()
         // Fill these in with appropriate data later
         content.title = "Get your Items!"
-        content.body = "Body"
+        content.body = chosenItems[0][0].category!
         
         content.sound = UNNotificationSound.default()
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let dateComponent = datePicker.calendar.dateComponents([.hour, .minute], from: datePicker.date)
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: false)
         
         let request = UNNotificationRequest(identifier: "ItemListIdentifier", content: content, trigger: trigger)
         

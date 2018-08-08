@@ -61,6 +61,15 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
         itemArray.append(workArray)
         itemArray.append(schoolArray)
         
+        // go through each category in the item array
+        // if the reminder of the first item is true add it to the selected array
+        
+        for items in itemArray {
+            if items[0].reminder == true {
+                chosenItems.append(items)
+            }
+        }
+        
         preTableView.delegate = self
         preTableView.dataSource = self
     }
@@ -107,9 +116,9 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
         
         cell.toggleSwitch?.tag = indexPath.row
         
-        
-        
         cell.toggleSwitch.addTarget(self, action: #selector(toggleSwitch(_:)), for: .valueChanged)
+        
+        cell.toggleSwitch.isOn = itemArray[indexPath.row][0].reminder
         
         return cell
     }
@@ -130,14 +139,13 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
         case "SetTimeSegue":
             let destination = segue.destination as! DataAlarmViewController
             
-            destination.chosenItems = chosenItems
+           // destination.chosenItems = chosenItems
             
         default:
             print("")
         }
 
     }
-    
     
     @objc func toggleSwitch(_ sender: UISwitch) {
         var essentialBool = false
@@ -152,8 +160,15 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
             switch sender.isOn{
             case true:
                 chosenItems.append(itemArray[0])
+                for item in itemArray[0] {
+                    item.reminder = true
+                    
+                }
             case false:
                
+                for item in itemArray[0] {
+                    item.reminder = false
+                }
                 for (index, items) in chosenItems.enumerated() {
                     for (_, item) in items.enumerated() {
                         if essentialBool == true {
@@ -161,6 +176,7 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
                         }
                         if item.category == "Essentials" {
                              chosenItems.remove(at: index)
+                            
                              essentialBool = true
                              continue
                         }
@@ -175,9 +191,16 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
             switch sender.isOn{
             case true:
                 chosenItems.append(itemArray[1])
+                for item in itemArray[1] {
+                    item.reminder = true
+                    
+                }
                 
             case false:
-                // [["hello"]]
+                for item in itemArray[1] {
+                    item.reminder = false
+                    
+                }
                 for (index, items) in chosenItems.enumerated() {
                     for (_, item) in items.enumerated() {
                         if travelBool == true {
@@ -199,9 +222,16 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
             switch sender.isOn{
             case true:
                 chosenItems.append(itemArray[2])
+                for item in itemArray[2] {
+                    item.reminder = true
+                    
+                }
                 
             case false:
-                
+                for item in itemArray[2] {
+                    item.reminder = false
+                    
+                }
                 for (index, items) in chosenItems.enumerated() {
                     for (_, item) in items.enumerated() {
                         if gymBool == true {
@@ -221,10 +251,17 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
             }
         case 3:
             switch sender.isOn{
-            case true: chosenItems.append(itemArray[3])
-                
+            case true:
+                chosenItems.append(itemArray[3])
+                for item in itemArray[3] {
+                    item.reminder = true
+                    
+                }
             case false:
-                
+                for item in itemArray[3] {
+                    item.reminder = false
+                    
+                }
                 for (index, items) in chosenItems.enumerated() {
                     for (_, item) in items.enumerated(){
                         if workBool == true {
@@ -245,8 +282,15 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
             switch sender.isOn{
             case true:
                 chosenItems.append(itemArray[4])
+                for item in itemArray[4] {
+                    item.reminder = true
+                    
+                }
             case false:
-                
+                for item in itemArray[4] {
+                    item.reminder = false
+                    
+                }
                 for (index, items) in chosenItems.enumerated() {
                     for (_, item) in items.enumerated(){
                         if schoolBool == true {
@@ -265,11 +309,10 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
             }
         default: break
         }
-        
-        }
+    }
     
     @IBAction func setTimeButtonAction(_ sender: UIButton) {
-        print ("Saved")
+       
         CoreDataHelper.save()
         //self.performSegue(withIdentifier: "SetTimeSegue", sender: self)
     }
