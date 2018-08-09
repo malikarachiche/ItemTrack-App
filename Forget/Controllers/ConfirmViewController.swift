@@ -26,9 +26,6 @@ class ConfirmViewController: UITableViewController {
         }
     }
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

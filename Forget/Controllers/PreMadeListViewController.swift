@@ -152,11 +152,7 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
         case "SecondSegueID":
             let destination = segue.destination as! SecondTableViewController
             destination.itemArray = itemArray[lastSelectedRow]
-        case "SetTimeSegue":
-            let destination = segue.destination as! DataAlarmViewController
-            
-           // destination.chosenItems = chosenItems
-            
+    
         default:
             print("")
         }

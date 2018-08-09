@@ -171,20 +171,7 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let identifier = segue.identifier else {return}
-        
-        switch identifier {
-        case "ConfirmSegue":
-            let destination = segue.destination as! ConfirmViewController
-//            destination.chosenItems = chosenItems
-            print(chosenItems)
-        default:
-            print("")
-        }
-        
-    }
-
+    
     @IBAction func alarmButton(_ sender: UIButton) {
         
         //Here i want to add the times to all the premade items

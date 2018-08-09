@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,  UNUserNotificationCenter
             let destinationController = storyboard.instantiateViewController(withIdentifier: "Confirm") as? ConfirmViewController
             navigationController?.pushViewController(destinationController!, animated: false)
             
-            print ("Handling notification with identifier 'ItemListIdentifier'")
+            //print ("Handling notification with identifier 'ItemListIdentifier'")
             
             // add segue here if this fails, try inside the completion handler
         }
@@ -39,12 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,  UNUserNotificationCenter
         
         completionHandler()
     }
-    
-    private func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-        
-    }
-    
-    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
