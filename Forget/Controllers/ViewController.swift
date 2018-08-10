@@ -47,11 +47,11 @@ class ViewController: UIViewController {
     @IBAction func preMadeButtonAction(_ sender: UIButton) {
     }
     @IBAction func customButtonAction(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Error", message: "Coming VERY Soon", preferredStyle: UIAlertControllerStyle.alert)
-        present(alert, animated: true)
-        alert.addAction(UIAlertAction(title: "Return", style: UIAlertActionStyle.cancel, handler: nil))
-        return
-    
+//        let alert = UIAlertController(title: "Error", message: "Coming VERY Soon", preferredStyle: UIAlertControllerStyle.alert)
+//        present(alert, animated: true)
+//        alert.addAction(UIAlertAction(title: "Return", style: UIAlertActionStyle.cancel, handler: nil))
+//        return
+//
     }
     
 }

@@ -13,6 +13,7 @@ import UserNotifications
 class ConfirmViewController: UITableViewController {
     
     var maxCount: Int = 0
+    var count: Int = 0
     
     var essentialArray = [PreMadeItem]()
     var travelArray = [PreMadeItem]()
@@ -105,7 +106,7 @@ class ConfirmViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var count: Int = 0
+        
         
         
         if tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCellAccessoryType.checkmark {

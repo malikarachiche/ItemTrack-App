@@ -21,6 +21,7 @@
 		4503AE1D2110CF9900C67C96 /* Forget.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE1B2110CF9800C67C96 /* Forget.xcdatamodeld */; };
 		4503AE1F2110DEC900C67C96 /* DataAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE1E2110DEC900C67C96 /* DataAlarmViewController.swift */; };
 		4515D9CE2114C4A00075D875 /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4515D9CD2114C4A00075D875 /* AlarmCell.swift */; };
+		45238429211D28D400631208 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45238428211D28D200631208 /* CustomCell.swift */; };
 		45253C4B211223C500F96A99 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45253C4A211223C500F96A99 /* CoreDataHelper.swift */; };
 		456F206221124D2400744C03 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45253C4A211223C500F96A99 /* CoreDataHelper.swift */; };
 		458EACA42117914500B791A9 /* PreMadeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458EACA32117914500B791A9 /* PreMadeCell.swift */; };
@@ -70,6 +71,7 @@
 		4503AE1C2110CF9800C67C96 /* Forget.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Forget.xcdatamodel; sourceTree = "<group>"; };
 		4503AE1E2110DEC900C67C96 /* DataAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAlarmViewController.swift; sourceTree = "<group>"; };
 		4515D9CD2114C4A00075D875 /* AlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
+		45238428211D28D200631208 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		45253C4A211223C500F96A99 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		458EACA32117914500B791A9 /* PreMadeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreMadeCell.swift; sourceTree = "<group>"; };
 		458EACA521180A9D00B791A9 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				4503AE0F210A905600C67C96 /* ItemModel.swift */,
+				45238428211D28D200631208 /* CustomCell.swift */,
 				458EACB32118FAC400B791A9 /* ConfirmCell.swift */,
 				458EACA32117914500B791A9 /* PreMadeCell.swift */,
 				4515D9CD2114C4A00075D875 /* AlarmCell.swift */,
@@ -330,6 +333,7 @@
 				458EACA621180A9D00B791A9 /* Colors.swift in Sources */,
 				458EACA42117914500B791A9 /* PreMadeCell.swift in Sources */,
 				458EACB02118F2C600B791A9 /* ConfirmViewController.swift in Sources */,
+				45238429211D28D400631208 /* CustomCell.swift in Sources */,
 				458EACAA211812E500B791A9 /* AllSetViewController.swift in Sources */,
 				4503AE14210BDB6F00C67C96 /* PreMadeListViewController.swift in Sources */,
 				4503ADD921078D0F00C67C96 /* ViewController.swift in Sources */,
