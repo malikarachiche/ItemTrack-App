@@ -16,13 +16,19 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
     
     private var datePicker = UIDatePicker()
     
+    let typeArray = ["Pre-Made Lists", "Custom Lists"]
+    
     var essentialArray = [PreMadeItem]()
     var travelArray = [PreMadeItem]()
     var workArray = [PreMadeItem]()
     var schoolArray = [PreMadeItem]()
     var gymArray = [PreMadeItem]()
+    
     var newArray = [[PreMadeItem]]()
     var chosenItems = [[PreMadeItem]]()
+    
+    var chosenCustomItems = [CustomItem]()
+    
     let dateFormatter = DateFormatter()
     
     var currentTextField: UITextField? = nil
@@ -32,7 +38,7 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         fetchData()
-        
+        //let customCoreData = CoreDataHelper.retrieveCustomItems()
         dateFormatter.dateFormat = "h:mm a"
         datePicker = UIDatePicker()
         datePicker.datePickerMode = .time
@@ -49,6 +55,21 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+//    func fetchCustomData() {
+//        let customCoreData = CoreDataHelper.retrieveCustomItems()
+//
+//        chosenCustomItems = []
+//
+//        for item in customCoreData {
+//            switch item.nameOfList {
+//            case item.nameOfList:
+//                chosenCustomItems.append(item)
+//            default:
+//                print("lol")
+//            }
+//        }
+//    }
     
     func fetchData()  {
         let coreData = CoreDataHelper.retrievePreMadeItems()
@@ -124,6 +145,15 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
         CoreDataHelper.save()
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        return typeArray[section]
+        
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return typeArray.count
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Did select Cell: \(indexPath.row)")

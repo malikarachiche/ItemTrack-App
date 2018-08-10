@@ -44,7 +44,7 @@ struct CoreDataHelper {
     
     static func delete(item: CustomItem) {
         context.delete(item)
-        
+        print(item)
         save()
     }
     

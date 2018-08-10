@@ -16,21 +16,24 @@ class CustomListViewController: UIViewController, UISearchBarDelegate, UITableVi
     @IBOutlet weak var customTableView: UITableView!
     @IBOutlet weak var nameofListTextField: UITextField!
     
-    
     var itemTextField: UITextField?
     
-    var chosenCustomItems = [CustomItem]()
+    // Add an observer that reloads the tableview when new items are added
+    var chosenCustomItems = [CustomItem]() {
+        /* Observe the notes array,
+         if the array changes,
+         run the code in the didSet block */
+        didSet {
+            self.customTableView.reloadData()
+        }
+    }
     var filteredData: [String]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureTextFieldAndTableView()
-        //itemsList = CoreDataHelper.retrieveItems()
-        //searchBar.delegate = (self as UISearchBarDelegate)
-        
-        
-        
+        print("cHOSEN ITEMS: \(chosenCustomItems.count)")
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,6 +69,7 @@ class CustomListViewController: UIViewController, UISearchBarDelegate, UITableVi
                 item.nameOfList = textField.text
             }
         }
+        print(chosenCustomItems)
         
         print("Text editing ended")
 
@@ -77,27 +81,33 @@ class CustomListViewController: UIViewController, UISearchBarDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredData?.count ?? 0
+        return chosenCustomItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = customTableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! CustomCell
         
-        cell.customLabel?.text = self.chosenCustomItems[indexPath.row].itemName
+        cell.customLabel!.text = chosenCustomItems[indexPath.row].itemName
+        
        
         return cell
     }
     
-    func _filteredArray(with itemLists: [Items]) -> [String] {
-        var filteredArray = [String]()
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-        for item in itemLists {
-            filteredArray.append(item.item)
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            
+            let deletedItem = chosenCustomItems[indexPath.row]
+            print("Deleted Item: \(deletedItem)")
+            chosenCustomItems.remove(at: indexPath.row)
+            
+            CoreDataHelper.delete(item: deletedItem)
+            
+            print("ChosenCustomItems Array: \(chosenCustomItems)")
+            
         }
-        
-        return filteredArray
     }
-
+  
     func itemTextField(textField: UITextField) {
         itemTextField = textField
         itemTextField?.placeholder = "Enter an Item"
@@ -120,6 +130,8 @@ class CustomListViewController: UIViewController, UISearchBarDelegate, UITableVi
             guard let item = alert.textFields?.first?.text else {return}
             singleCustomItem.itemName = item
             singleCustomItem.reminder = true
+            
+            CoreDataHelper.save()
             
             self.chosenCustomItems.append(singleCustomItem)
             
