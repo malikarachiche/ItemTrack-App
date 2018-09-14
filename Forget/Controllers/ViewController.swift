@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    // Home screen
     @IBOutlet weak var homeScreenLabel: UILabel!
     @IBOutlet weak var preMadebutton: UIButton!
     @IBOutlet weak var customButton: UIButton!
@@ -22,17 +22,18 @@ class ViewController: UIViewController {
         
         //self.navigationController?.navigationBar.isHidden = true
         
+        // Blue to white gradient in the home screen
         self.navigationController?.navigationBar.tintColor = UIColor.white;
 
         view.setGradientBackground(colorOne: Colors.babyBlue, colorTwo: Colors.offWhite)
         
     }
-    
+    // Hides nav bar so gradient is cleaner
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
-    
+    // Restores navigation bar for later screens
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)

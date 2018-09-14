@@ -17,9 +17,11 @@ class SecondTableViewController: UITableViewController {
     
     let cellID = "SecondTableViewCell"
     
+    // number of cells = number of items in the category
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemArray.count
     }
+    // prints each item of respective category into cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = secondTableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
         

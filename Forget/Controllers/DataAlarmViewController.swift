@@ -17,7 +17,7 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
     private var datePicker = UIDatePicker()
     
     let typeArray = ["Pre-Made Lists", "Custom Lists"]
-    
+    // Initializes some stuff
     var essentialArray = [PreMadeItem]()
     var travelArray = [PreMadeItem]()
     var workArray = [PreMadeItem]()
@@ -28,12 +28,14 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
     var chosenItems = [[PreMadeItem]]()
     
     var chosenCustomItems = [CustomItem]()
+    let chosenCustomItemsLists = [[CustomItem]]()
     
     let dateFormatter = DateFormatter()
     
     var currentTextField: UITextField? = nil
     var selectedIndex: IndexPath? = nil
     
+    // Formats datePicker
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,28 +57,41 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-//    func fetchCustomData() {
-//        let customCoreData = CoreDataHelper.retrieveCustomItems()
-//
-//        chosenCustomItems = []
-//
+    // Retrieves custom items
+    func fetchCustomData() {
+        let customCoreData = CoreDataHelper.retrieveCustomItems()
+
+        chosenCustomItems = []
+        
+        
 //        for item in customCoreData {
-//            switch item.nameOfList {
-//            case item.nameOfList:
-//                chosenCustomItems.append(item)
-//            default:
-//                print("lol")
-//            }
+//            chosenCustomItems.append(item)
 //        }
-//    }
+//
+//        for item in chosenCustomItemsLists[]
+//
+//        }
+
+        
+        
+       for item in customCoreData {
+           switch item.nameOfList {
+           case item.nameOfList:
+               chosenCustomItems.append(item)
+            default:
+                print("lol")
+            }
+        }
+        
+    }
     
+    // Retrieves PreMade items
     func fetchData()  {
         let coreData = CoreDataHelper.retrievePreMadeItems()
        
         newArray = []
         chosenItems = []
-        
+        // Same logic as in PreMadeListViewController
         for item in coreData {
             switch item.category {
             case "Essentials":
@@ -113,12 +128,13 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
         }
         CoreDataHelper.save()
     }
-    
+    // If user taps anywhere on the screen, removes keyboard
     @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
         view.endEditing(true)
         view.resignFirstResponder()
     }
     
+    // Handles if user changes the time on date picker, changes notifiation time to new time user selects
     @objc func dateChanged(datePicker: UIDatePicker) {
         print(dateFormatter.string(from: datePicker.date))
         if let currentTextField = currentTextField {
@@ -127,14 +143,14 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
             // update chosen items at selected index
             //chosenItems[(selectedIndex?.row)!].date = datePicker.date
         }
-        
     }
     
+    // Same logic as CustomListViewController,
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.currentTextField = textField
      
     }
-    
+    // Same logic, saves time user selects into CoreData
     func textFieldDidEndEditing(_ textField: UITextField) {
         self.currentTextField = nil
         let cell: UITableViewCell = textField.superview!.superview as! UITableViewCell
@@ -144,30 +160,32 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
         chosenItems[(selectedIndex?.row)!][0].setTime = datePicker.date
         CoreDataHelper.save()
     }
+    // Some functions marked with * below still don't work properly
     
+    // * Title based on whether list is premade or custom
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         return typeArray[section]
         
     }
-    
+    // Number of sections = 2 (Either premade or custom)
     override func numberOfSections(in tableView: UITableView) -> Int {
         return typeArray.count
     }
-    
+    // Useless function, just used for debugging
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Did select Cell: \(indexPath.row)")
     }
-    
+    // Number of rows = number of lists user selects
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return chosenItems.count
     }
     
+    // * Makes each cell = Name of list as well as a couple items in the list as subLabel text
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = alarmTableView.dequeueReusableCell(withIdentifier: "AlarmCell", for: indexPath) as! AlarmCell
     
         let chosen = chosenItems[indexPath.row]
-        
         cell.titleLabel?.text = chosen[0].category
         
         let text = "\(chosen[0].name!), \(chosen[1].name!)..."
@@ -186,6 +204,7 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
         return cell
     }
     
+    // Handles deleting lists
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == UITableViewCellEditingStyle.delete {
@@ -201,7 +220,7 @@ class DataAlarmViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
-    
+    // If user taps this button, finalizes lists and sets local notifications that will go off at the time user selected
     @IBAction func alarmButton(_ sender: UIButton) {
         
         //Here i want to add the times to all the premade items

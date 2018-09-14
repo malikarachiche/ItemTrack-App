@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 
 class AllSetViewController: UIViewController {
+    // All this screen does is have some labels that tell the user that they are all set, no
+    // actual functionality in this screen
     
     override func viewDidLoad() {
         super.viewDidLoad()

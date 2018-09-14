@@ -16,9 +16,10 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var setTimeButton: UIButton!
     @IBOutlet weak var preTableView: UITableView!
     
+    // Initialize some stuff
     let cellID = "PreMadeCell"
     var lastSelectedRow = 0
- 
+    
     var itemArray = [[PreMadeItem]]()
     var essentialArray = [PreMadeItem]()
     var travelArray = [PreMadeItem]()
@@ -30,10 +31,8 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
     var typeSet = Set<String>()
     var chosenItems = [[PreMadeItem]]()
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
     }
     
@@ -44,6 +43,7 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
         
         let preMadeItems = CoreDataHelper.retrievePreMadeItems()
         
+        // Takes all pre-made items and organizes it into array based on category, then adds all arrays into a bigger array
         for item in preMadeItems {
             switch item.category {
             case "Essentials":
@@ -82,9 +82,9 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
                     }
                 }
             }
-            
         }
         
+        // More initializations
         preTableView.delegate = self
         preTableView.dataSource = self
         preTableView.reloadData()
@@ -95,6 +95,7 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
         
     }
     
+    // Filters array by items
     func _filteredArrayItems(with itemLists: [PreMadeItem]) -> [String] {
         // filters array by items
         var filteredArray = [String]()
@@ -106,6 +107,7 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
         return filteredArray
     }
     
+    // Filters array by type (category)
     func _filteredArrayTypes(with itemLists: [PreMadeItem]) -> [String] {
         // filters array by category
         var filteredArray = [String]()
@@ -120,10 +122,12 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
         return filteredArray
     }
     
+    // Number of rows = the number of different categories (since they are separated by array)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemArray.count
     }
-
+    
+    // Customizes each cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = preTableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! PreMadeCell
 
@@ -139,12 +143,14 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
         return cell
     }
 
+    // When user taps on a cell, brings them to another screen with the contents of the list based on category
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         lastSelectedRow = indexPath.row
         self.performSegue(withIdentifier: "SecondSegueID", sender: self)
         //essentialsArr.append(indexPath.row)
     }
     
+    // Prepares for segue when user taps on a cell
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else {return}
         
@@ -159,6 +165,8 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
 
     }
     
+    // When user toggles switch, that respective list is added to a new array that is designated for items that the user chose
+    // If user chooses Travel for example, all travel items will be added to a new array which will show up in Alarm Screen
     @objc func toggleSwitch(_ sender: UISwitch) {
         var essentialBool = false
         var travelBool = false
@@ -166,8 +174,10 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
         var schoolBool = false
         var gymBool = false
        
+        // Cases depend on which switches are toggled; there is a switch for every list.
         switch sender.tag{
-            
+        
+        // If Essential switch is toggled
         case 0:
             switch sender.isOn{
             case true:
@@ -199,6 +209,7 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
                     }
                 }
             }
+        // If Travel switch is toggled
         case 1:
             switch sender.isOn{
             case true:
@@ -230,6 +241,7 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
                     }
                 }
             }
+        // If gym switch is toggled
         case 2:
             switch sender.isOn{
             case true:
@@ -261,6 +273,7 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
                     }
                 }
             }
+        // If work switch is toggled
         case 3:
             switch sender.isOn{
             case true:
@@ -290,6 +303,7 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
                     }
                 }
             }
+        // If school switch is toggled
         case 4:
             switch sender.isOn{
             case true:
@@ -323,6 +337,8 @@ class PreMadeListViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    // When user is finished selecting lists, once they tap the Set Time button, the chosenItems array along with the items in the array are
+    // saved into Core Data so they can be retrieved in the next screen.
     @IBAction func setTimeButtonAction(_ sender: UIButton) {
         
         if chosenItems == [] {
